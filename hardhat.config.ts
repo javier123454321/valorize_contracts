@@ -67,6 +67,7 @@ export default {
   etherscan: {
     apiKey: {
         mainnet: process.env.ETHERSCAN_API_KEY,
+        ropsten: process.env.ETHERSCAN_API_KEY,
         arbitrumOne: process.env.ARBISCAN_API_KEY,
         polygon: process.env.POLYGONSCAN_API_KEY,
     }
