@@ -4,14 +4,23 @@ import { Deployer } from '../typechain/Deployer';
 
 async function main() {
     const [deployerAccount] = await ethers.getSigners();
-    console.log("Deploying contracts with the account:", deployerAccount.address);
-    console.log("Account balance:", ethers.utils.formatEther((await deployerAccount.getBalance()).toString()), "ETH");
+    console.log(
+      "Deploying contracts with the account:", deployerAccount.address
+    );
+    console.log(
+      "Account balance:",
+      ethers.utils.formatEther(
+        (await deployerAccount.getBalance()).toString()
+    ), "ETH");
+
     if (process.env.DEPLOYER_CONTRACT_ADMIN_ADDRESS) {
-      const deployerContract = await new DeployerFactory(deployerAccount).deploy(
-        process.env.DEPLOYER_CONTRACT_ADMIN_ADDRESS,
-      );
-      console.log(deployerContract);
+      const deployerContract = await new DeployerFactory(deployerAccount)
+        .deploy(process.env.DEPLOYER_CONTRACT_ADMIN_ADDRESS);
+
+      console.log("deploying now")
       await deployerContract.deployed();
+      console.log("Success")
+
     } 
   }
   
